@@ -49,6 +49,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
         return sen;
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,9 +80,9 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             public void onClick(View v) {
                 String msg = message.getText().toString();
                 message.setText("");
-                b.send(md5(msg));
+                b.send(md5(msg) + "\n");
                 //b.send(msg);
-                Display("You: "+msg);
+                Display("You: "+md5(msg));
             }
         });
 
