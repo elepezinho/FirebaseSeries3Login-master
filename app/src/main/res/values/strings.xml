@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Key Less</string>
+    <string name="logout">Logout</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <color name="bg">#C0C0C0</color>
+</resources>
