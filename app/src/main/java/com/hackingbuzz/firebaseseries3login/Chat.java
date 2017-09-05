@@ -21,7 +21,9 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.google.firebase.auth.FirebaseAuth;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import me.aflak.bluetooth.Bluetooth;
 
@@ -33,6 +35,19 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
     private TextView text;
     private ScrollView scrollView;
     private boolean registered=false;
+
+    public static String md5(String senha){
+        String sen = "";
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
+        sen = hash.toString(16);
+        return sen;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +78,8 @@ public class Chat extends AppCompatActivity implements Bluetooth.CommunicationCa
             public void onClick(View v) {
                 String msg = message.getText().toString();
                 message.setText("");
-                b.send(msg);
+                b.send(md5(msg));
+                //b.send(msg);
                 Display("You: "+msg);
             }
         });
