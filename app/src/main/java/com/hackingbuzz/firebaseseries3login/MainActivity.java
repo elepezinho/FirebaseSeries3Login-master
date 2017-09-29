@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
-
         initViews();
         initObejcts();
 
@@ -111,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 // basically checking if email or passwword is empty .. then print Toast else sign in  with the help of auth object
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
 
-            Toast.makeText(MainActivity.this, "Enter email or password", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Entre com seu e-mail e senha", Toast.LENGTH_LONG).show();
         } else {
 
             // signing in with the help of firebase auth object..   // addOnCompleteListener will check...if user compteted sign in or not...(it is getting result as a task object n we can check if it is sucessfull or not
@@ -119,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (!task.isSuccessful()) {
-                        Toast.makeText(MainActivity.this, "User Not Found", Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, "Usuário não encontrado", Toast.LENGTH_LONG).show();
                     }
                 }
             });
